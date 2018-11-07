@@ -2,14 +2,20 @@
 
 include '../conexao.php';
 
-$sql = "INSERT INTO Paciente (paciente_nome, paciente_doc) values('{}', '{}')";
-
 $conn = (new Conexao())->connect();
 
-if(1 == 1){
-    echo json_encode(['nome' => 'Joao']);
+$pacienteNome = $_POST['paciente_nome'];
+$pacienteDoc = $_POST['paciente_doc'];
+
+$query = "INSERT INTO Paciente (paciente_nome, paciente_doc)
+ values ('{$pacienteNome}', '{$pacienteDoc}')";
+
+if(mysqli_query($conn, $query)){
+    echo 'inserido com sucesso';
 } else {
-    echo 'falhou';
+    echo 'erro na inserção';
 }
+
+$conn->mysqli_close();
     
 ?>
