@@ -7,10 +7,10 @@
 
 class Conexao{
     public function connect(){    
-        $server = 'fdb22.awardspace.net';
-        $user = '2874449_agenda';
-        $pass = '3Uj7zy98@';
-        $db = '2874449_agenda';
+        $server = 'localhost';
+        $user = 'id7728892_root';
+        $pass = '8759836a';
+        $db = 'id7728892_agenda';
 
         return $conn = mysqli_connect($server, $user, $pass, $db);
     }

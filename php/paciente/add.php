@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * author legates (Lucas)
+ * email lucas.arantes55@gmail.com
+ */
+
 include '../conexao.php';
 
 $conn = (new Conexao())->connect();
@@ -11,11 +16,11 @@ $query = "INSERT INTO Paciente (paciente_nome, paciente_doc)
  values ('{$pacienteNome}', '{$pacienteDoc}')";
 
 if(mysqli_query($conn, $query)){
-    echo 'inserido com sucesso';
+    $conn->mysqli_close();
+    return true;
 } else {
-    echo 'erro na inserção';
+    $conn->mysqli_close();
+    return false;
 }
-
-$conn->mysqli_close();
     
 ?>
