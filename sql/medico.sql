@@ -1,5 +1,5 @@
 CREATE TABLE Medico(
-	medico_id bigint NOT NULL,
+	medico_id bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,
     medico_nome varchar(200) NOT NULL,
 	medico_cpf varchar(11) NOT NULL,	
 	medico_crm varchar(50) NOT NULL,

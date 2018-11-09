@@ -1,14 +1,19 @@
 package legates.agendapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -21,27 +26,51 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import legates.agendapp.Models.Paciente;
+
 public class PacienteActivity extends AppCompatActivity {
 
     private ProgressDialog p;
     private ListView listaPacientes;
-    ArrayList<String> pacientes;
+    ArrayList<Paciente> pacientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paciente);
-        pacientes = new ArrayList<>();
+
         listaPacientes = findViewById(R.id.listPacientes);
 
-        new getPacientes().execute();
+        registerForContextMenu(listaPacientes);
 
-        listaPacientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Button btn_add = findViewById(R.id.btn_add_paciente);
+        btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder window = new AlertDialog.Builder(PacienteActivity.this);
-                window.setMessage("olá mundo\n\n\nnome do paciente\n\n\ndocumento");
-                window.show();
+            public void onClick(View v) {
+                Intent addPacientesView = new Intent (PacienteActivity.this, AddPacienteActivity.class);
+                startActivity(addPacientesView);
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        pacientes = new ArrayList<>();
+
+        new getPacientes().execute();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem remover = menu.add("Remover");
+        remover.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+                Paciente paciente = (Paciente) listaPacientes.getItemAtPosition(info.position);
+                Toast.makeText(PacienteActivity.this, paciente.getId(), Toast.LENGTH_LONG).show();
+                return false;
             }
         });
     }
@@ -95,14 +124,18 @@ public class PacienteActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                Paciente paciente = new Paciente();
 
-                String name = null;
                 try {
-                    name = c.getString("name");
+                    paciente.setId(c.getString("id"));
+                    paciente.setNome(c.getString("nome"));
+                    paciente.setCpf(c.getString("cpf"));
+                    paciente.setTelefone(c.getString("telefone"));
+                    paciente.setEmail(c.getString("email"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                pacientes.add(name);
+                pacientes.add(paciente);
             }
 
             return null;
@@ -117,9 +150,10 @@ public class PacienteActivity extends AppCompatActivity {
                 p.dismiss();
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(PacienteActivity.this, android.R.layout.simple_list_item_1, pacientes);
+            ArrayAdapter<Paciente> adapter = new ArrayAdapter<Paciente>(PacienteActivity.this, android.R.layout.simple_list_item_1, pacientes);
             listaPacientes.setAdapter(adapter);
         }
 
     }
+
 }

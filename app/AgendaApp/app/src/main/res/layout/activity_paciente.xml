@@ -17,7 +17,7 @@
         android:layout_marginRight="20dp"
         android:textColor="#FFF"
         android:elevation="6dp"
-        android:id="@+id/btn_novo_aluno"
+        android:id="@+id/btn_add_paciente"
         android:textSize="20sp"
         android:text="+"
         android:layout_alignParentBottom="true"
