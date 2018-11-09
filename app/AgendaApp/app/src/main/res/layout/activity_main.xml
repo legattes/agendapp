@@ -5,20 +5,49 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Pacientes"
-        android:id="@+id/btn-pacientes"/>
 
     <Button
-        android:id="@+id/btn-conultas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btn-consultas"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="134dp"
+        android:layout_marginTop="20dp"
         android:text="Consultas" />
+
+    <Button
+        android:id="@+id/btn-pacientes"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:text="Pacientes" />
+
+    <Button
+        android:id="@+id/btn-medicos"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="205dp"
+        android:text="Médicos" />
+
+    <Button
+        android:id="@+id/btn-convenios"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="295dp"
+        android:text="Convênios" />
+
+    <Button
+        android:id="@+id/btn-especialidades"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="385dp"
+        android:text="Especialidades" />
+
+
 
 </RelativeLayout>

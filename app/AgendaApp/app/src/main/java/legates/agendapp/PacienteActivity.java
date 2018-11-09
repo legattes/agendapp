@@ -73,6 +73,8 @@ public class PacienteActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        MenuItem editar = menu.add("Editar");
     }
 
     private class getPacientes extends AsyncTask<Void, Void, Void> {
@@ -80,7 +82,6 @@ public class PacienteActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Showing progress dialog
             p = new ProgressDialog(PacienteActivity.this);
             p.setMessage("Carregando...");
             p.setCancelable(false);
