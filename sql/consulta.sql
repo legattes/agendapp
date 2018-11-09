@@ -2,8 +2,8 @@ CREATE TABLE Consulta(
 	consulta_id bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	medico_id bigint NOT NULL,
 	paciente_id bigint NOT NULL,
-	convenio_id bigint NOT NULL,
 	especialidade_id bigint NOT NULL,
+	convenio_id bigint NOT NULL,
 	consulta_status varchar(2) NOT NULL DEFAULT 1,
 	consulta_data date not null,
 	
