@@ -85,7 +85,6 @@ public class AddPacienteActivity extends AppCompatActivity {
                     .url("http://agendapp.dx.am/paciente/add.php")
                     .method("POST",requestBody).header("Content-Length", "0").build();
 
-
             try {
                 Response response = cliente.newCall(request).execute();
                 if(response.headers().get("Response-Code").equals("420")){

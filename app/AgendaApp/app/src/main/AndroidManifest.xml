@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PacienteActivity" />
-        <activity android:name=".AddPacienteActivity"></activity>
+        <activity android:name=".AddPacienteActivity" />
+        <activity android:name=".EditPacienteActivity"></activity>
     </application>
 
 </manifest>
