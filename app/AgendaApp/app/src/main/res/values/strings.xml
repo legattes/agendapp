@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AgendApp</string>
     <string name="title_activity_paciente">PacienteActivity</string>
+    <string name="label_edit_paciente_activity">Editar paciente</string>
+    <string name="label_add_paciente_activity">Cadastrar paciente</string>
+    <string name="label_paciente_activity">Pacientes</string>
 </resources>

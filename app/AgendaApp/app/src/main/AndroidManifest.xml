@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PacienteActivity" />
-        <activity android:name=".AddPacienteActivity" />
-        <activity android:name=".EditPacienteActivity"></activity>
+        <activity android:name=".PacienteActivity" android:label="@string/label_paciente_activity"/>
+        <activity android:name=".AddPacienteActivity" android:label="@string/label_add_paciente_activity"/>
+        <activity android:name=".EditPacienteActivity" android:label="@string/label_edit_paciente_activity"></activity>
     </application>
 
 </manifest>
