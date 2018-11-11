@@ -6,18 +6,18 @@
     android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/listPacientesSwipe"
+        android:id="@+id/listEspecialidadesSwipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listPacientes">
+            android:id="@+id/listEspecialidadess">
         </ListView>
     </android.support.v4.widget.SwipeRefreshLayout>
     <Button
-        android:id="@+id/btn_add_paciente"
+        android:id="@+id/btn_add_especialidade"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentRight="true"

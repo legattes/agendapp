@@ -18,9 +18,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PacienteActivity" android:label="@string/label_paciente_activity"/>
-        <activity android:name=".AddPacienteActivity" android:label="@string/label_add_paciente_activity"/>
-        <activity android:name=".EditPacienteActivity" android:label="@string/label_edit_paciente_activity"></activity>
+        <activity
+            android:name=".PacienteActivity"
+            android:label="@string/label_paciente_activity" />
+        <activity
+            android:name=".AddPacienteActivity"
+            android:label="@string/label_add_paciente_activity" />
+        <activity
+            android:name=".EditPacienteActivity"
+            android:label="@string/label_edit_paciente_activity" />
+        <activity
+            android:name=".ConvenioActivity"
+            android:label="@string/label_convenio_activity"/>
+        <activity
+            android:name=".EspecialidadeActivity"
+            android:label="@string/label_especialidade_activity"/>
+        <activity
+            android:name=".ConsultaActivity"
+            android:label="@string/label_consulta_activity"/>
+        <activity
+            android:name=".MedicoActivity"
+            android:label="@string/label_medico_activity" />
+        <activity
+            android:name=".AddMedicoActivity"
+            android:label="@string/label_add_medico_activity" />
+        <activity
+            android:name=".EditMedicoActivity"
+            android:label="@string/label_edit_medico_activity" />
+        <activity
+            android:name=".AddConvenioActivity"
+            android:label="@string/label_add_convenio_activity"/>
+        <activity
+            android:name=".EditConvenioActivity"
+            android:label="@string/label_edit_convenio_activity"/>
+        <activity
+            android:name=".AddEspecialidadeActivity"
+            android:label="@string/label_add_especialidade_activity"/>
+        <activity
+            android:name=".EditEspecialidadeActivity"
+            android:label="@string/label_edit_especialidade_activity"></activity>
     </application>
 
 </manifest>

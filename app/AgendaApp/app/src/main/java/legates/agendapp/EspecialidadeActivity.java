@@ -18,62 +18,61 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import legates.agendapp.Models.Paciente;
+import legates.agendapp.Models.Especialidade;
 
-public class PacienteActivity extends AppCompatActivity {
+public class EspecialidadeActivity extends AppCompatActivity {
     private AlertDialog userDialog;
     private AlertDialog.Builder userDialogBuilder;
     private ProgressDialog loading;
-    private ListView listaPacientes;
-    private ArrayList<Paciente> pacientes;
+    private ArrayList<Especialidade> especialidades;
+    private ListView listaEspecialidades;
     private SwipeRefreshLayout swipe;
-    public static Paciente paciente;
+    public static Especialidade especialidade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paciente);
-        swipe = findViewById(R.id.listPacientesSwipe);
+        setContentView(R.layout.activity_especialidade);
+
+        swipe = findViewById(R.id.listEspecialidadesSwipe);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 recreate();
             }
         });
-        listaPacientes = findViewById(R.id.listPacientes);
 
-        registerForContextMenu(listaPacientes);
+        listaEspecialidades = findViewById(R.id.listEspecialidadess);
+        registerForContextMenu(listaEspecialidades);
 
-        listaPacientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listaEspecialidades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                paciente = (Paciente) listaPacientes.getItemAtPosition(position);
+                especialidade = (Especialidade) listaEspecialidades.getItemAtPosition(position);
 
-                userDialogBuilder = new AlertDialog.Builder(PacienteActivity.this);
-                userDialogBuilder.setMessage("Nome: " + paciente.getNome() + "\n\n" + "CPF: " + paciente.getCpf() + "\n\n" + "Telefone: " +  paciente.getTelefone() + "\n\n" + "E-mail: " + paciente.getEmail() + "\n")
+                userDialogBuilder = new AlertDialog.Builder(EspecialidadeActivity.this);
+                userDialogBuilder.setMessage("Nome: " + especialidade.getNome() + "\n")
                         .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent editPacienteView = new Intent(PacienteActivity.this, EditPacienteActivity.class);
-                        startActivity(editPacienteView);
-                    }
-                });
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent editEspecialidadeView = new Intent(EspecialidadeActivity.this, EditEspecialidadeActivity.class);
+                                startActivity(editEspecialidadeView);
+                            }
+                        });
 
                 userDialog = userDialogBuilder.create();
                 userDialog.show();
             }
         });
 
-        Button btn_add = findViewById(R.id.btn_add_paciente);
+        Button btn_add = findViewById(R.id.btn_add_especialidade);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addPacientesView = new Intent (PacienteActivity.this, AddPacienteActivity.class);
-                startActivity(addPacientesView);
+                Intent addEspecialidadeView = new Intent (EspecialidadeActivity.this, AddEspecialidadeActivity.class);
+                startActivity(addEspecialidadeView);
             }
         });
     }
@@ -81,23 +80,24 @@ public class PacienteActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new getPacientes().execute();
+        new getEspecialidades().execute();
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        paciente = (Paciente) listaPacientes.getItemAtPosition(info.position);
+        especialidade = (Especialidade) listaEspecialidades.getItemAtPosition(info.position);
 
         MenuItem remover = menu.add("Remover");
         remover.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                userDialogBuilder = new AlertDialog.Builder(PacienteActivity.this);
-                userDialogBuilder.setMessage("Deseja remover o paciente " + paciente.getNome() + "?").setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                userDialogBuilder = new AlertDialog.Builder(EspecialidadeActivity.this);
+                userDialogBuilder.setMessage("Deseja remover a especialidade " + especialidade.getNome() + "?").setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        new removePaciente().execute();
+                        new removeEspecialidade().execute();
                     }
                 }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
                     @Override
@@ -114,12 +114,11 @@ public class PacienteActivity extends AppCompatActivity {
         });
     }
 
-    private class getPacientes extends AsyncTask<Void, Void, Void> {
-
+    private class getEspecialidades extends AsyncTask<Void, Void, Void>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(PacienteActivity.this);
+            loading = new ProgressDialog(EspecialidadeActivity.this);
             loading.setMessage("Carregando...");
             loading.setCancelable(false);
             loading.show();
@@ -127,11 +126,9 @@ public class PacienteActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            paciente = new Paciente();
-            pacientes = paciente.get();
-
+            especialidade = new Especialidade();
+            especialidades = especialidade.get();
             return null;
-
         }
 
         @Override
@@ -142,26 +139,24 @@ public class PacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            ArrayAdapter<Paciente> adapter = new ArrayAdapter<Paciente>(PacienteActivity.this, android.R.layout.simple_list_item_1, pacientes);
-            listaPacientes.setAdapter(adapter);
+            ArrayAdapter<Especialidade> adapter = new ArrayAdapter<Especialidade>(EspecialidadeActivity.this, android.R.layout.simple_list_item_1, especialidades);
+            listaEspecialidades.setAdapter(adapter);
         }
-
     }
 
-    private class removePaciente extends  AsyncTask<Void, Void, Void>{
-
+    private class removeEspecialidade extends AsyncTask<Void, Void, Void>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(PacienteActivity.this);
-            loading.setMessage("Removendo...");
+            loading = new ProgressDialog(EspecialidadeActivity.this);
+            loading.setMessage("Carregando...");
             loading.setCancelable(false);
             loading.show();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            if(!paciente.remove()){
+            if(!especialidade.remove()){
                 this.cancel(true);
             }
 
@@ -176,7 +171,7 @@ public class PacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(PacienteActivity.this, "Removido com sucesso", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(EspecialidadeActivity.this, "Removido com sucesso", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             recreate();
@@ -188,10 +183,9 @@ public class PacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
             super.onCancelled();
-            Toast toast = Toast.makeText(PacienteActivity.this, "Não foi possível remover", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(EspecialidadeActivity.this, "Não foi possível remover", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
         }
     }
-
 }

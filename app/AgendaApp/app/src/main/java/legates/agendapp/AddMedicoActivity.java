@@ -1,11 +1,7 @@
 package legates.agendapp;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,34 +10,36 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import legates.agendapp.Models.Paciente;
+import legates.agendapp.Models.Medico;
 
-public class AddPacienteActivity extends AppCompatActivity {
-;
+
+public class AddMedicoActivity extends AppCompatActivity {
     private ProgressDialog loading;
-    private Paciente paciente = new Paciente();
+    private Medico medico = new Medico();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_paciente);
+        setContentView(R.layout.activity_add_medico);
 
-        Button btn_salvar = findViewById(R.id.btn_salvar_paciente);
+        Button btn_salvar = findViewById(R.id.btn_salvar_medico);
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText paciente_nome = findViewById(R.id.input_paciente_nome);
-                EditText paciente_cpf = findViewById(R.id.input_paciente_cpf);
-                EditText paciente_telefone = findViewById(R.id.input_paciente_telefone);
-                EditText paciente_email = findViewById(R.id.input_paciente_email);
+                EditText medico_nome = findViewById(R.id.input_medico_nome);
+                EditText medico_cpf = findViewById(R.id.input_medico_cpf);
+                EditText medico_crm = findViewById(R.id.input_medico_crm);
+                EditText medico_telefone = findViewById(R.id.input_medico_telefone);
+                EditText medico_email = findViewById(R.id.input_medico_email);
 
-                paciente.setNome(paciente_nome.getText().toString());
-                paciente.setCpf(paciente_cpf.getText().toString());
-                paciente.setTelefone(paciente_telefone.getText().toString());
-                paciente.setEmail(paciente_email.getText().toString());
+                medico.setNome(medico_nome.getText().toString());
+                medico.setCpf(medico_cpf.getText().toString());
+                medico.setCrm(medico_crm.getText().toString());
+                medico.setTelefone(medico_telefone.getText().toString());
+                medico.setEmail(medico_email.getText().toString());
 
-                new add().execute();
+                new AddMedicoActivity.add().execute();
             }
         });
     }
@@ -50,7 +48,7 @@ public class AddPacienteActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(AddPacienteActivity.this);
+            loading = new ProgressDialog(AddMedicoActivity.this);
             loading.setMessage("Salvando...");
             loading.setCancelable(false);
             loading.show();
@@ -58,7 +56,7 @@ public class AddPacienteActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            if(!paciente.add()){
+            if(!medico.add()){
                 this.cancel(true);
             }
             return null;
@@ -72,7 +70,7 @@ public class AddPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(AddPacienteActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(AddMedicoActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();
@@ -86,7 +84,7 @@ public class AddPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(AddPacienteActivity.this, "Não foi possível cadastrar", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(AddMedicoActivity.this, "Não foi possível cadastrar", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();

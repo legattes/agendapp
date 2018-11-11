@@ -10,26 +10,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static legates.agendapp.PacienteActivity.paciente;
+import static legates.agendapp.ConvenioActivity.convenio;
 
-public class EditPacienteActivity extends AppCompatActivity {
+public class EditConvenioActivity extends AppCompatActivity {
     ProgressDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_paciente);
+        setContentView(R.layout.activity_edit_convenio);
 
-        EditText editNome = findViewById(R.id.input_edit_paciente_nome);
-        EditText editTelefone = findViewById(R.id.input_edit_paciente_telefone);
-        EditText editEmail = findViewById(R.id.input_edit_paciente_email);
+        EditText editNome = findViewById(R.id.input_edit_convenio_nome);
+        EditText editDia_mes_fatura = findViewById(R.id.input_edit_convenio_dia_mes_fatura);
 
-        editNome.setText(paciente.getNome());
-        editTelefone.setText(paciente.getTelefone());
-        editEmail.setText(paciente.getEmail());
+        editNome.setText(convenio.getNome());
+        editDia_mes_fatura.setText(convenio.getDia_mes_fatura());
 
-        Button btn_edit_paciente = findViewById(R.id.btn_edit_paciente);
-        btn_edit_paciente.setOnClickListener(new View.OnClickListener() {
+        Button btn_edit_convenio = findViewById(R.id.btn_edit_convenio);
+        btn_edit_convenio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new edit().execute();
@@ -38,11 +36,10 @@ public class EditPacienteActivity extends AppCompatActivity {
     }
 
     private class edit extends AsyncTask<Void, Void, Void>{
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(EditPacienteActivity.this);
+            loading = new ProgressDialog(EditConvenioActivity.this);
             loading.setMessage("Editando...");
             loading.setCancelable(false);
             loading.show();
@@ -50,15 +47,13 @@ public class EditPacienteActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            EditText nome = findViewById(R.id.input_edit_paciente_nome);
-            EditText telefone = findViewById(R.id.input_edit_paciente_telefone);
-            EditText email = findViewById(R.id.input_edit_paciente_email);
+            EditText nome = findViewById(R.id.input_edit_convenio_nome);
+            EditText dia_mes_fatura = findViewById(R.id.input_edit_convenio_dia_mes_fatura);
 
-            paciente.setNome(nome.getText().toString());
-            paciente.setTelefone(telefone.getText().toString());
-            paciente.setEmail(email.getText().toString());
+            convenio.setNome(nome.getText().toString());
+            convenio.setDia_mes_fatura(dia_mes_fatura.getText().toString());
 
-            if(!paciente.edit()){
+            if(!convenio.edit()){
                 this.cancel(true);
             }
 
@@ -73,7 +68,7 @@ public class EditPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(EditPacienteActivity.this, "Editado com sucesso.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(EditConvenioActivity.this, "Editado com sucesso.", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();
@@ -87,7 +82,7 @@ public class EditPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(EditPacienteActivity.this, "Não foi possível editar", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(EditConvenioActivity.this, "Não foi possível editar", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();

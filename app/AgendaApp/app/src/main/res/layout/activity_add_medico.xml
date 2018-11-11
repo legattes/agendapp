@@ -8,18 +8,18 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/input_paciente_nome"
+        android:id="@+id/input_medico_nome"
+        android:hint="Nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="24dp"
-        android:hint="Nome"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp">
     </EditText>
 
     <EditText
-        android:id="@+id/input_paciente_cpf"
+        android:id="@+id/input_medico_cpf"
         android:hint="CPF"
         android:inputType="number"
         android:layout_width="match_parent"
@@ -31,9 +31,9 @@
     </EditText>
 
     <EditText
-        android:id="@+id/input_paciente_telefone"
-        android:hint="Telefone"
-        android:inputType="phone"
+        android:id="@+id/input_medico_crm"
+        android:hint="CRM"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -44,25 +44,38 @@
     </EditText>
 
     <EditText
-        android:id="@+id/input_paciente_email"
+        android:id="@+id/input_medico_telefone"
+        android:hint="Telefone"
+        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="235dp"
+        android:baselineAligned="false"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/input_medico_email"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="235dp"
+        android:layout_marginTop="300dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"        >
+        tools:layout_editor_absoluteY="16dp">
     </EditText>
 
     <Button
-        android:id="@+id/btn_salvar_paciente"
-        android:text="Salvar"
+        android:id="@+id/btn_salvar_medico"
         android:layout_width="122dp"
         android:layout_height="71dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="71dp"
+        android:text="Salvar"
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="409dp" />
 </RelativeLayout>

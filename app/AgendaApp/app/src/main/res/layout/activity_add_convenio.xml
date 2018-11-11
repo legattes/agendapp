@@ -8,19 +8,19 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/input_paciente_nome"
+        android:id="@+id/input_convenio_nome"
+        android:hint="Nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="24dp"
-        android:hint="Nome"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp">
     </EditText>
 
     <EditText
-        android:id="@+id/input_paciente_cpf"
-        android:hint="CPF"
+        android:id="@+id/input_convenio_dia_mes_fatura"
+        android:hint="Dia do mês para faturar"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,39 +30,14 @@
         tools:layout_editor_absoluteY="16dp">
     </EditText>
 
-    <EditText
-        android:id="@+id/input_paciente_telefone"
-        android:hint="Telefone"
-        android:inputType="phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="166dp"
-        android:baselineAligned="false"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp">
-    </EditText>
-
-    <EditText
-        android:id="@+id/input_paciente_email"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="235dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"        >
-    </EditText>
-
     <Button
-        android:id="@+id/btn_salvar_paciente"
-        android:text="Salvar"
+        android:id="@+id/btn_salvar_convenio"
         android:layout_width="122dp"
         android:layout_height="71dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="71dp"
+        android:text="Salvar"
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="409dp" />
 </RelativeLayout>

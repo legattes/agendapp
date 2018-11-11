@@ -18,7 +18,7 @@ $result['convenios'] = [];
 while($row = mysqli_fetch_assoc($queryResult)){
     $item = [
         'id' => $row['convenio_id'],
-        'nome' => $row['convenio_nome'],
+        'nome' => $row['convenio_nome'],        
         'dia_mes_fatura' => $row['convenio_dia_mes_fatura'],
     ];
 

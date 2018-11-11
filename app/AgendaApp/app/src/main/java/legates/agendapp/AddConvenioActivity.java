@@ -1,11 +1,7 @@
 package legates.agendapp;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,43 +10,38 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import legates.agendapp.Models.Paciente;
+import legates.agendapp.Models.Convenio;
 
-public class AddPacienteActivity extends AppCompatActivity {
-;
+public class AddConvenioActivity extends AppCompatActivity {
     private ProgressDialog loading;
-    private Paciente paciente = new Paciente();
+    private Convenio convenio = new Convenio();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_paciente);
+        setContentView(R.layout.activity_add_convenio);
 
-        Button btn_salvar = findViewById(R.id.btn_salvar_paciente);
+        Button btn_salvar = findViewById(R.id.btn_salvar_convenio);
 
         btn_salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText paciente_nome = findViewById(R.id.input_paciente_nome);
-                EditText paciente_cpf = findViewById(R.id.input_paciente_cpf);
-                EditText paciente_telefone = findViewById(R.id.input_paciente_telefone);
-                EditText paciente_email = findViewById(R.id.input_paciente_email);
+                EditText convenio_nome = findViewById(R.id.input_convenio_nome);
+                EditText convenio_dia_mes_fatura = findViewById(R.id.input_convenio_dia_mes_fatura);
 
-                paciente.setNome(paciente_nome.getText().toString());
-                paciente.setCpf(paciente_cpf.getText().toString());
-                paciente.setTelefone(paciente_telefone.getText().toString());
-                paciente.setEmail(paciente_email.getText().toString());
+                convenio.setNome(convenio_nome.getText().toString());
+                convenio.setDia_mes_fatura(convenio_dia_mes_fatura.getText().toString());
 
-                new add().execute();
+                new AddConvenioActivity.add().execute();
             }
         });
     }
 
-    private class add extends AsyncTask<Void, Void, Void> {
+    private class add extends AsyncTask<Void, Void, Void>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(AddPacienteActivity.this);
+            loading = new ProgressDialog(AddConvenioActivity.this);
             loading.setMessage("Salvando...");
             loading.setCancelable(false);
             loading.show();
@@ -58,7 +49,7 @@ public class AddPacienteActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            if(!paciente.add()){
+            if(!convenio.add()){
                 this.cancel(true);
             }
             return null;
@@ -72,7 +63,7 @@ public class AddPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(AddPacienteActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(AddConvenioActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();
@@ -86,7 +77,7 @@ public class AddPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(AddPacienteActivity.this, "Não foi possível cadastrar", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(AddConvenioActivity.this, "Não foi possível cadastrar", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();

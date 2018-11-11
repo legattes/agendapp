@@ -18,7 +18,7 @@ $result['especialidades'] = [];
 while($row = mysqli_fetch_assoc($queryResult)){
     $item = [
         'id' => $row['especialidade_id'],
-        'nome' => $row['especialidade_nome']
+        'nome' => $row['especialidade_nome'],        
     ];
 
     array_push($result['especialidades'], $item);

@@ -9,21 +9,18 @@ include '../conexao.php';
 
 $conn = (new Conexao())->connect();
 
-if(!isset($_POST['especialidade_nome']) 
-|| ($_POST['especialidade_nome']) == ''){
+if(!isset($_POST['especialidade_id']) 
+|| ($_POST['especialidade_id']) == ''){
     header('Response-Code: 420');
     die();
 }
 
-$especialidadeNome = $_POST['especialidade_nome'];
+$especialidadeId = $_POST['especialidade_id'];
 
-$query = "INSERT INTO Especialidade (especialidade_nome)
- values ('{$especialidadeNome}')";
+$query = "DELETE FROM Especialidade where especialidade_id = '{$especialidadeId}'";
 
 if(mysqli_query($conn, $query)){
     header('Response-Code: 200');
 } else {
     header('Response-Code: 200');
 }
-    
-?>

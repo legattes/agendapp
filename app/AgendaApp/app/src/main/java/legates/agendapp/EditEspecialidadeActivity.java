@@ -10,26 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static legates.agendapp.PacienteActivity.paciente;
+import static legates.agendapp.EspecialidadeActivity.especialidade;
 
-public class EditPacienteActivity extends AppCompatActivity {
+public class EditEspecialidadeActivity extends AppCompatActivity {
     ProgressDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_paciente);
+        setContentView(R.layout.activity_edit_especialidade);
 
-        EditText editNome = findViewById(R.id.input_edit_paciente_nome);
-        EditText editTelefone = findViewById(R.id.input_edit_paciente_telefone);
-        EditText editEmail = findViewById(R.id.input_edit_paciente_email);
+        EditText editNome = findViewById(R.id.input_edit_especialidade_nome);
 
-        editNome.setText(paciente.getNome());
-        editTelefone.setText(paciente.getTelefone());
-        editEmail.setText(paciente.getEmail());
+        editNome.setText(especialidade.getNome());
 
-        Button btn_edit_paciente = findViewById(R.id.btn_edit_paciente);
-        btn_edit_paciente.setOnClickListener(new View.OnClickListener() {
+        Button btn_edit_especialidade = findViewById(R.id.btn_edit_especialidade);
+        btn_edit_especialidade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new edit().execute();
@@ -37,12 +33,11 @@ public class EditPacienteActivity extends AppCompatActivity {
         });
     }
 
-    private class edit extends AsyncTask<Void, Void, Void>{
-
+    private class edit extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(EditPacienteActivity.this);
+            loading = new ProgressDialog(EditEspecialidadeActivity.this);
             loading.setMessage("Editando...");
             loading.setCancelable(false);
             loading.show();
@@ -50,15 +45,11 @@ public class EditPacienteActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            EditText nome = findViewById(R.id.input_edit_paciente_nome);
-            EditText telefone = findViewById(R.id.input_edit_paciente_telefone);
-            EditText email = findViewById(R.id.input_edit_paciente_email);
+            EditText nome = findViewById(R.id.input_edit_especialidade_nome);
 
-            paciente.setNome(nome.getText().toString());
-            paciente.setTelefone(telefone.getText().toString());
-            paciente.setEmail(email.getText().toString());
+            especialidade.setNome(nome.getText().toString());
 
-            if(!paciente.edit()){
+            if(!especialidade.edit()){
                 this.cancel(true);
             }
 
@@ -73,7 +64,7 @@ public class EditPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(EditPacienteActivity.this, "Editado com sucesso.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(EditEspecialidadeActivity.this, "Editado com sucesso.", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();
@@ -87,7 +78,7 @@ public class EditPacienteActivity extends AppCompatActivity {
                 loading.dismiss();
             }
 
-            Toast toast = Toast.makeText(EditPacienteActivity.this, "Não foi possível editar", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(EditEspecialidadeActivity.this, "Não foi possível editar", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();
             finish();

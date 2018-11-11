@@ -32,7 +32,7 @@ $query = "UPDATE Paciente SET paciente_nome = '$pacienteNome',paciente_telefone 
 
 
 if(mysqli_query($conn, $query)){
-    header('Response-Code: ' . $pacienteNome);
+    header('Response-Code: 200');
 } else {
     header('Response-Code: 420');
 }
