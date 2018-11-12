@@ -5,7 +5,7 @@ CREATE TABLE Consulta(
 	especialidade_id bigint NOT NULL,
 	convenio_id bigint NOT NULL,
 	consulta_status varchar(2) NOT NULL DEFAULT 1,
-	consulta_data date not null,
+	consulta_data datetime not null,
 	
 	CONSTRAINT fk_medico_id_at_consulta FOREIGN KEY (medico_id) REFERENCES Medico (medico_id),
 	CONSTRAINT fk_paciente_id_at_consulta FOREIGN KEY (paciente_id) REFERENCES Paciente (paciente_id),

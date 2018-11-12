@@ -29,13 +29,13 @@
             android:label="@string/label_edit_paciente_activity" />
         <activity
             android:name=".ConvenioActivity"
-            android:label="@string/label_convenio_activity"/>
+            android:label="@string/label_convenio_activity" />
         <activity
             android:name=".EspecialidadeActivity"
-            android:label="@string/label_especialidade_activity"/>
+            android:label="@string/label_especialidade_activity" />
         <activity
             android:name=".ConsultaActivity"
-            android:label="@string/label_consulta_activity"/>
+            android:label="@string/label_consulta_activity" />
         <activity
             android:name=".MedicoActivity"
             android:label="@string/label_medico_activity" />
@@ -47,16 +47,18 @@
             android:label="@string/label_edit_medico_activity" />
         <activity
             android:name=".AddConvenioActivity"
-            android:label="@string/label_add_convenio_activity"/>
+            android:label="@string/label_add_convenio_activity" />
         <activity
             android:name=".EditConvenioActivity"
-            android:label="@string/label_edit_convenio_activity"/>
+            android:label="@string/label_edit_convenio_activity" />
         <activity
             android:name=".AddEspecialidadeActivity"
-            android:label="@string/label_add_especialidade_activity"/>
+            android:label="@string/label_add_especialidade_activity" />
         <activity
             android:name=".EditEspecialidadeActivity"
-            android:label="@string/label_edit_especialidade_activity"></activity>
+            android:label="@string/label_edit_especialidade_activity" />
+        <activity android:name=".AddConsultaActivity" />
+        <activity android:name=".MedicoEspecialidadeActivity"></activity>
     </application>
 
 </manifest>

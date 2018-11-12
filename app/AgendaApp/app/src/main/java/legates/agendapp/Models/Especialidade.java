@@ -105,4 +105,35 @@ public class Especialidade {
 
         return true;
     }
+
+    public ArrayList<Especialidade> getByMedico(String id) {
+        Map<String, String> values = new HashMap<String, String>();
+        values.put("medico_id", id);
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.dx.am/especialidade/listByMedico.php");
+
+        JSONArray json = JSONParser.getKey(response, "especialidades");
+
+        for(int i = 0; i < json.length(); i++){
+            JSONObject c = new JSONObject();
+
+            try {
+                c = json.getJSONObject(i);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Especialidade especialidade = new Especialidade();
+
+            try {
+                especialidade.setId(c.getString("id"));
+                especialidade.setNome(c.getString("nome"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            especialidades.add(especialidade);
+        }
+
+        return especialidades;
+    }
 }

@@ -55,13 +55,19 @@ public class MedicoActivity extends AppCompatActivity {
 
                 userDialogBuilder = new AlertDialog.Builder(MedicoActivity.this);
                 userDialogBuilder.setMessage("Nome: " + medico.getNome() + "\n\n" + "CPF: " + medico.getCpf() + "\n\n" + "CRM: " + medico.getCrm() + "\n\n" + "Telefone: " + medico.getTelefone() + "\n\n" + "E-mail: " + medico.getEmail() + "\n")
-                        .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Editar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent editPacienteView = new Intent(MedicoActivity.this, EditMedicoActivity.class);
-                                startActivity(editPacienteView);
+                                Intent editMedicoView = new Intent(MedicoActivity.this, EditMedicoActivity.class);
+                                startActivity(editMedicoView);
                             }
-                        });
+                        }).setNegativeButton("Especialidades", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent medicoEspecialidadeView = new Intent(MedicoActivity.this, MedicoEspecialidadeActivity.class);
+                        startActivity(medicoEspecialidadeView);
+                    }
+                });
 
                 userDialog = userDialogBuilder.create();
                 userDialog.show();

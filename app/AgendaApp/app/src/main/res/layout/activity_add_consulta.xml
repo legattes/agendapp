@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="false"
+    android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/input_consulta_medico"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"></Spinner>
+
+    <Spinner
+        android:id="@+id/input_consulta_paciente"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="95dp"></Spinner>
+
+    <Spinner
+        android:id="@+id/input_consulta_especialidade"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="166dp"></Spinner>
+
+    <Spinner
+        android:id="@+id/input_consulta_convenio"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="235dp"></Spinner>
+
+    <Button
+        android:id="@+id/btn_salvar_especialidade"
+        android:layout_width="122dp"
+        android:layout_height="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="71dp"
+        android:text="Salvar"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="409dp" />
+</RelativeLayout>

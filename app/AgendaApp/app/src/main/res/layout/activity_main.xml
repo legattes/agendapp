@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <Button
         android:id="@+id/btn-consultas"
@@ -12,42 +12,59 @@
         android:layout_height="75dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Consultas" />
+        android:text="Consultas"
+        app:layout_constraintBottom_toTopOf="@+id/btn-pacientes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn-pacientes"
         android:layout_width="155dp"
         android:layout_height="75dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="110dp"
-        android:text="Pacientes" />
+        android:layout_centerHorizontal="true"
+        android:text="Pacientes"
+        app:layout_constraintBottom_toTopOf="@+id/btn-medicos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn-consultas" />
 
     <Button
         android:id="@+id/btn-medicos"
         android:layout_width="155dp"
         android:layout_height="75dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="205dp"
-        android:text="Médicos" />
+        android:text="Médicos"
+        app:layout_constraintBottom_toTopOf="@+id/btn-convenios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn-pacientes" />
 
     <Button
         android:id="@+id/btn-convenios"
         android:layout_width="155dp"
         android:layout_height="75dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="295dp"
-        android:text="Convênios" />
+        android:text="Convênios"
+        app:layout_constraintBottom_toTopOf="@+id/btn-especialidades"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn-medicos" />
 
     <Button
         android:id="@+id/btn-especialidades"
         android:layout_width="155dp"
         android:layout_height="75dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="385dp"
-        android:text="Especialidades" />
-
-
-
-</RelativeLayout>
+        android:text="Especialidades"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn-convenios" />
+</android.support.constraint.ConstraintLayout>
