@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddMedicoEspecialidadeActivity">
+    android:layout_centerInParent="false"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <Spinner
+        android:id="@+id/input_medico_especialidade"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"></Spinner>
+
+    <Button
+        android:id="@+id/btn_salvar_medico_especialidade"
+        android:layout_width="122dp"
+        android:layout_height="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="71dp"
+        android:text="Salvar"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="409dp" />
+</RelativeLayout>

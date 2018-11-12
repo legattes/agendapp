@@ -77,7 +77,7 @@ public class Medico {
 
     public ArrayList<Medico> get() {
         service = new Service();
-        response = service.get("http://agendapp.dx.am/medico/list.php");
+        response = service.get("http://agendapp.legates.com.br/medico/list.php");
 
         JSONArray json = JSONParser.getKey(response, "medicos");
 
@@ -111,7 +111,7 @@ public class Medico {
         values.put("medico_id", this.id);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/medico/remove.php");
+        response = service.post(values, "http://agendapp.legates.com.br/medico/remove.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -127,7 +127,7 @@ public class Medico {
         values.put("medico_email", this.email);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/medico/add.php");
+        response = service.post(values, "http://agendapp.legates.com.br/medico/add.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -143,7 +143,7 @@ public class Medico {
         values.put("medico_email", this.email);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/medico/edit.php");
+        response = service.post(values, "http://agendapp.legates.com.br/medico/edit.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;

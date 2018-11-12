@@ -36,7 +36,7 @@
         android:layout_marginTop="235dp"></Spinner>
 
     <Button
-        android:id="@+id/btn_salvar_especialidade"
+        android:id="@+id/btn_salvar_consulta"
         android:layout_width="122dp"
         android:layout_height="71dp"
         android:layout_alignParentBottom="true"

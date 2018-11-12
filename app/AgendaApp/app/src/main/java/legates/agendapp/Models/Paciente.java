@@ -74,7 +74,7 @@ public class Paciente{
 
     public ArrayList<Paciente> get() {
         service = new Service();
-        response = service.get("http://agendapp.dx.am/paciente/list.php");
+        response = service.get("http://agendapp.legates.com.br/paciente/list.php");
 
         JSONObject reader = new JSONObject();
         try {
@@ -120,7 +120,7 @@ public class Paciente{
         values.put("paciente_id", this.id);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/paciente/remove.php");
+        response = service.post(values, "http://agendapp.legates.com.br/paciente/remove.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -135,7 +135,7 @@ public class Paciente{
         values.put("paciente_email", this.email);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/paciente/add.php");
+        response = service.post(values, "http://agendapp.legates.com.br/paciente/add.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -151,7 +151,7 @@ public class Paciente{
         values.put("paciente_email", this.email);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/paciente/edit.php");
+        response = service.post(values, "http://agendapp.legates.com.br/paciente/edit.php");
 
 
 

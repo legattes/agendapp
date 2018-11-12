@@ -24,6 +24,7 @@ public class MedicoEspecialidadeActivity extends AppCompatActivity {
     private ArrayList<Especialidade> especialidades;
     private SwipeRefreshLayout swipe;
     private Intent intent;
+    private String medico_id;
     public static Especialidade especialidade;
 
     @Override
@@ -52,6 +53,7 @@ public class MedicoEspecialidadeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent addMedicoEspecialidadesView = new Intent (MedicoEspecialidadeActivity.this, AddMedicoEspecialidadeActivity.class);
+                addMedicoEspecialidadesView.putExtra("MEDICO_ID", medico_id);
                 startActivity(addMedicoEspecialidadesView);
             }
         });
@@ -69,7 +71,7 @@ public class MedicoEspecialidadeActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            String medico_id = intent.getStringExtra("MEDICO_ID");
+            medico_id = intent.getStringExtra("MEDICO_ID");
             especialidade = new Especialidade();
             especialidades = especialidade.getByMedico(medico_id);
             return null;

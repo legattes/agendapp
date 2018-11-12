@@ -100,7 +100,7 @@ public class Consulta {
 
     public ArrayList<Consulta> get(){
         service = new Service();
-        response = service.get("http://agendapp.dx.am/consulta/list.php");
+        response = service.get("http://agendapp.legates.com.br/consulta/list.php");
 
         JSONArray json = JSONParser.getKey(response, "consultas");
 

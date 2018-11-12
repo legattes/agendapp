@@ -50,7 +50,7 @@ public class Convenio {
 
     public ArrayList<Convenio> get(){
         service = new Service();
-        response = service.get("http://agendapp.dx.am/convenio/list.php");
+        response = service.get("http://agendapp.legates.com.br/convenio/list.php");
 
         JSONArray json = JSONParser.getKey(response, "convenios");
 
@@ -81,7 +81,7 @@ public class Convenio {
         values.put("convenio_id", this.id);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/convenio/remove.php");
+        response = service.post(values, "http://agendapp.legates.com.br/convenio/remove.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -94,7 +94,7 @@ public class Convenio {
         values.put("convenio_dia_mes_fatura", this.dia_mes_fatura);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/convenio/add.php");
+        response = service.post(values, "http://agendapp.legates.com.br/convenio/add.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -109,7 +109,7 @@ public class Convenio {
         values.put("convenio_dia_mes_fatura", this.dia_mes_fatura);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/convenio/edit.php");
+        response = service.post(values, "http://agendapp.legates.com.br/convenio/edit.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;

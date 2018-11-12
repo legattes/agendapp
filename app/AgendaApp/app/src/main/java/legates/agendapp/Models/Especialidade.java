@@ -41,7 +41,7 @@ public class Especialidade {
 
     public ArrayList<Especialidade> get(){
         service = new Service();
-        response = service.get("http://agendapp.dx.am/especialidade/list.php");
+        response = service.get("http://agendapp.legates.com.br/especialidade/list.php");
 
         JSONArray json = JSONParser.getKey(response, "especialidades");
 
@@ -71,7 +71,7 @@ public class Especialidade {
         values.put("especialidade_nome", this.nome);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/especialidade/add.php");
+        response = service.post(values, "http://agendapp.legates.com.br/especialidade/add.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -84,7 +84,7 @@ public class Especialidade {
         values.put("especialidade_id", this.id);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/especialidade/remove.php");
+        response = service.post(values, "http://agendapp.legates.com.br/especialidade/remove.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -97,7 +97,7 @@ public class Especialidade {
         values.put("especialidade_nome", this.nome);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/especialidade/edit.php");
+        response = service.post(values, "http://agendapp.legates.com.br/especialidade/edit.php");
 
         if(response.headers().get("Response-Code").equals("420")){
             return false;
@@ -111,7 +111,7 @@ public class Especialidade {
         values.put("medico_id", id);
 
         service = new Service();
-        response = service.post(values, "http://agendapp.dx.am/especialidade/listByMedico.php");
+        response = service.post(values, "http://agendapp.legates.com.br/especialidade/listByMedico.php");
 
         JSONArray json = JSONParser.getKey(response, "especialidades");
 
