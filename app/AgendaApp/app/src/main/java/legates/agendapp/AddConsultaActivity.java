@@ -21,6 +21,7 @@ import legates.agendapp.Models.Paciente;
 
 public class AddConsultaActivity extends AppCompatActivity {
     private ProgressDialog loading;
+    private ProgressDialog loading2;
     private Paciente paciente;
     private ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
     private Spinner listaPacientes;
@@ -47,12 +48,16 @@ public class AddConsultaActivity extends AppCompatActivity {
         listaEspecialidades = findViewById(R.id.input_consulta_especialidade);
         listaConvenios = findViewById(R.id.input_consulta_convenio);
 
+        new getter().execute();
 
         listaMedicos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 medico = (Medico) listaMedicos.getItemAtPosition(position);
-                new getEspecialidades().execute();
+                if(Integer.parseInt(medico.getId()) > 0){
+                    AsyncTask<Void, Void, Void> especialidades = new getEspecialidades();
+                    especialidades.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                }
             }
 
             @Override
@@ -60,9 +65,6 @@ public class AddConsultaActivity extends AppCompatActivity {
 
             }
         });
-
-        new getter().execute();
-
     }
 
     private class getter extends AsyncTask<Void, Void, Void>{
@@ -85,14 +87,16 @@ public class AddConsultaActivity extends AppCompatActivity {
             pacientes.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             convenios.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
-            /*while(medicos.getStatus() == Status.RUNNING || pacientes.getStatus() == Status.RUNNING || convenios.getStatus() == Status.RUNNING){
+            while(medicos.getStatus() != Status.FINISHED
+                    || pacientes.getStatus() != Status.FINISHED
+                    || convenios.getStatus() != Status.FINISHED){
                 Thread.currentThread();
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }*/
+            }
             return null;
         }
 
@@ -164,12 +168,11 @@ public class AddConsultaActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = new ProgressDialog(AddConsultaActivity.this);
-            loading.setMessage("Carregando...");
-            loading.setCancelable(false);
-            loading.show();
+            loading2 = new ProgressDialog(AddConsultaActivity.this);
+            loading2.setMessage("Carregando especialidades...");
+            loading2.setCancelable(false);
+            loading2.show();
         }
-
         @Override
         protected Void doInBackground(Void... voids) {
             especialidade = new Especialidade();
@@ -181,8 +184,8 @@ public class AddConsultaActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            if(loading.isShowing()){
-                loading.dismiss();
+            if(loading2.isShowing()){
+                loading2.dismiss();
             }
 
             ArrayAdapter<Especialidade> adapter = new ArrayAdapter<Especialidade>(AddConsultaActivity.this, android.R.layout.simple_spinner_item, especialidades);

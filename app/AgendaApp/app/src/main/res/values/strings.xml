@@ -8,6 +8,8 @@
     <string name="label_medico_activity">Médicos</string>
     <string name="label_add_medico_activity">Cadastrar médico</string>
     <string name="label_edit_medico_activity">Editar médico</string>
+    <string name="label_medico_especialidade_activity">Especialidades do médico</string>
+    <string name="label_add_medico_especialidade_activity">Nova especialidade do médico</string>
 
     <string name="label_convenio_activity">Convênios</string>
     <string name="label_add_convenio_activity">Cadastrar convênio</string>

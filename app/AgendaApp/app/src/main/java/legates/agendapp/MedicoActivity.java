@@ -65,6 +65,7 @@ public class MedicoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent medicoEspecialidadeView = new Intent(MedicoActivity.this, MedicoEspecialidadeActivity.class);
+                        medicoEspecialidadeView.putExtra("MEDICO_ID", medico.getId());
                         startActivity(medicoEspecialidadeView);
                     }
                 });

@@ -44,6 +44,7 @@ public class PacienteActivity extends AppCompatActivity {
                 recreate();
             }
         });
+
         listaPacientes = findViewById(R.id.listPacientes);
 
         registerForContextMenu(listaPacientes);
@@ -115,7 +116,6 @@ public class PacienteActivity extends AppCompatActivity {
     }
 
     private class getPacientes extends AsyncTask<Void, Void, Void> {
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -145,7 +145,6 @@ public class PacienteActivity extends AppCompatActivity {
             ArrayAdapter<Paciente> adapter = new ArrayAdapter<Paciente>(PacienteActivity.this, android.R.layout.simple_list_item_1, pacientes);
             listaPacientes.setAdapter(adapter);
         }
-
     }
 
     private class removePaciente extends  AsyncTask<Void, Void, Void>{
