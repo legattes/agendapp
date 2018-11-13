@@ -102,6 +102,10 @@ public class Consulta {
         service = new Service();
         response = service.get("http://agendapp.legates.com.br/consulta/list.php");
 
+        if(response.code() == 500){
+            return null;
+        }
+
         JSONArray json = JSONParser.getKey(response, "consultas");
 
         for(int i = 0; i < json.length(); i++){
@@ -129,5 +133,22 @@ public class Consulta {
         }
 
         return consultas;
+    }
+
+    public boolean add(){
+        values.put("medico_id", this.getMedico());
+        values.put("paciente_id", this.getPaciente());
+        values.put("especialidade_id", this.getEspecialidade());
+        values.put("convenio_id", this.getConvenio());
+        values.put("consulta_data", "2018-11-14 12:00:00");
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/consulta/add.php");
+
+        if(response.code() == 500){
+            return false;
+        }
+
+        return true;
     }
 }

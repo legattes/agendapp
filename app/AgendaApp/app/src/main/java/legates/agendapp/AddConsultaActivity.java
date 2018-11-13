@@ -5,11 +5,14 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,6 +21,8 @@ import legates.agendapp.Models.Convenio;
 import legates.agendapp.Models.Especialidade;
 import legates.agendapp.Models.Medico;
 import legates.agendapp.Models.Paciente;
+
+import static legates.agendapp.ConsultaActivity.consulta;
 
 public class AddConsultaActivity extends AppCompatActivity {
     private ProgressDialog loading;
@@ -63,6 +68,26 @@ public class AddConsultaActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        Button btn_salvar_consulta = findViewById(R.id.btn_salvar_consulta);
+        btn_salvar_consulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                medico = (Medico) listaMedicos.getSelectedItem();
+                paciente = (Paciente) listaPacientes.getSelectedItem();
+                especialidade = (Especialidade) listaEspecialidades.getSelectedItem();
+                convenio = (Convenio) listaConvenios.getSelectedItem();
+
+                consulta = new Consulta();
+
+                consulta.setMedico(medico.getId());
+                consulta.setPaciente(paciente.getId());
+                consulta.setEspecialidade(especialidade.getId());
+                consulta.setConvenio(convenio.getId());
+
+                new addConsulta().execute();
             }
         });
     }
@@ -191,6 +216,52 @@ public class AddConsultaActivity extends AppCompatActivity {
             ArrayAdapter<Especialidade> adapter = new ArrayAdapter<Especialidade>(AddConsultaActivity.this, android.R.layout.simple_spinner_item, especialidades);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             listaEspecialidades.setAdapter(adapter);
+        }
+    }
+
+    private class addConsulta extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loading2 = new ProgressDialog(AddConsultaActivity.this);
+            loading2.setMessage("Salvando...");
+            loading2.setCancelable(false);
+            loading2.show();
+        }
+        @Override
+        protected Void doInBackground(Void... voids) {
+            if(!consulta.add()){
+                this.cancel(true);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            if(loading.isShowing()){
+                loading.dismiss();
+            }
+
+            Toast toast = Toast.makeText(AddConsultaActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 500);
+            toast.show();
+            finish();
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+
+            if(loading.isShowing()){
+                loading.dismiss();
+            }
+
+            Toast toast = Toast.makeText(AddConsultaActivity.this, "Não foi possível cadastrar", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 500);
+            toast.show();
+            finish();
         }
     }
 }

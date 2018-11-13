@@ -17,7 +17,6 @@ import android.widget.Toast;
 import legates.agendapp.Models.Paciente;
 
 public class AddPacienteActivity extends AppCompatActivity {
-;
     private ProgressDialog loading;
     private Paciente paciente = new Paciente();
 

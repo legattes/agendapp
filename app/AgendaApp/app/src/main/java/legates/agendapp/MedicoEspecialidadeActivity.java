@@ -46,8 +46,6 @@ public class MedicoEspecialidadeActivity extends AppCompatActivity {
 
         registerForContextMenu(listaEspecialidades);
 
-        new getEspecialidadesByMedico().execute();
-
         Button btn_add = findViewById(R.id.btn_add_medico_especialidade);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +55,12 @@ public class MedicoEspecialidadeActivity extends AppCompatActivity {
                 startActivity(addMedicoEspecialidadesView);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        new getEspecialidadesByMedico().execute();
     }
 
     private class getEspecialidadesByMedico extends AsyncTask<Void, Void, Void>{

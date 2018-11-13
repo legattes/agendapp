@@ -129,7 +129,7 @@ public class Medico {
         service = new Service();
         response = service.post(values, "http://agendapp.legates.com.br/medico/add.php");
 
-        if(response.headers().get("Response-Code").equals("420")){
+        if(response.code() == 500){
             return false;
         }
 
@@ -146,6 +146,20 @@ public class Medico {
         response = service.post(values, "http://agendapp.legates.com.br/medico/edit.php");
 
         if(response.headers().get("Response-Code").equals("420")){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean addEspecialidade(String especialidade_id) {
+        values.put("medico_id", this.id);
+        values.put("especialidade_id", especialidade_id);
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/medico/addespec.php");
+
+        if(response.code() == 500){
             return false;
         }
 

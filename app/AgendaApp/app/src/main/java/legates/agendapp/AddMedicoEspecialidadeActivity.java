@@ -6,7 +6,10 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,10 +33,18 @@ public class AddMedicoEspecialidadeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         medico_id = intent.getStringExtra("MEDICO_ID");
 
-        listaEspecialidades = findViewById(R.id.input_medico_especialidade);
+        listaEspecialidades =  findViewById(R.id.input_medico_especialidade);
         medico.setId(medico_id);
 
         new getEspecialidades().execute();
+
+        Button btn_salvar_medico_especialidade = findViewById(R.id.btn_salvar_medico_especialidade);
+        btn_salvar_medico_especialidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new addMedicoEspecialidade().execute();
+            }
+        });
 
     }
 
@@ -49,9 +60,10 @@ public class AddMedicoEspecialidadeActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            /*if(!medico.addEspecialidade()){
+            especialidade = (Especialidade) listaEspecialidades.getSelectedItem();
+            if(!medico.addEspecialidade(especialidade.getId())){
                 this.cancel(true);
-            }*/
+            }
             return null;
         }
 
