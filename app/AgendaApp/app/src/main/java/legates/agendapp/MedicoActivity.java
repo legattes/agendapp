@@ -188,10 +188,11 @@ public class MedicoActivity extends AppCompatActivity {
 
         @Override
         protected void onCancelled() {
+            super.onCancelled();
             if(loading.isShowing()){
                 loading.dismiss();
             }
-            super.onCancelled();
+
             Toast toast = Toast.makeText(MedicoActivity.this, "Não foi possível remover", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 500);
             toast.show();

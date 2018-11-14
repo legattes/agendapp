@@ -35,14 +35,21 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="235dp"></Spinner>
 
+    <DatePicker
+        android:id="@+id/date_picker_consulta"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="310dp"></DatePicker>
+
     <Button
         android:id="@+id/btn_salvar_consulta"
         android:layout_width="122dp"
         android:layout_height="71dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="49dp"
         android:text="Salvar"
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="409dp" />
+
 </RelativeLayout>

@@ -165,4 +165,18 @@ public class Medico {
 
         return true;
     }
+
+    public boolean removeEspecilidade(String especialidade_id){
+        values.put("especialidade_id", especialidade_id);
+        values.put("medico_id", this.id);
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/medico/removeespec.php");
+
+        if(response.code() == 500){
+            return false;
+        }
+
+        return true;
+    }
 }
