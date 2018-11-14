@@ -35,11 +35,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="235dp"></Spinner>
 
-    <DatePicker
-        android:id="@+id/date_picker_consulta"
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="310dp"></DatePicker>
+        android:layout_marginTop="310dp"
+        android:hint="data"
+        android:id="@+id/input_consulta_data"/>
 
     <Button
         android:id="@+id/btn_salvar_consulta"

@@ -16,7 +16,7 @@ LEFT JOIN Paciente P
 LEFT JOIN Especialidade E
 	ON C.especialidade_id = E.especialidade_id
 LEFT JOIN Convenio Con
-	ON C.convenio_id = Con.convenio_id";
+    ON C.convenio_id = Con.convenio_id WHERE C.consulta_status <> '0'";
 
 $conn = (new Conexao())->connect();
 

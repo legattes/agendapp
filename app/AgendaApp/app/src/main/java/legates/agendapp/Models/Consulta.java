@@ -140,10 +140,50 @@ public class Consulta {
         values.put("paciente_id", this.getPaciente());
         values.put("especialidade_id", this.getEspecialidade());
         values.put("convenio_id", this.getConvenio());
-        values.put("consulta_data", "2018-11-14 12:00:00");
+        values.put("consulta_data",this.getData());
 
         service = new Service();
         response = service.post(values, "http://agendapp.legates.com.br/consulta/add.php");
+
+        if(response.code() == 500){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean remove(){
+        values.put("consulta_id", this.getId());
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/consulta/remove.php");
+
+        if(response.code() == 500){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean confirmar(){
+        values.put("consulta_id", this.getId());
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/consulta/confirmar.php");
+
+        if(response.code() == 500){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean remarcar(){
+        values.put("consulta_id", this.getId());
+        values.put("consulta_data",this.getData());
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/consulta/remarcar.php");
 
         if(response.code() == 500){
             return false;

@@ -9,7 +9,7 @@ include '../conexao.php';
 
 $conn = (new Conexao())->connect();
 
-if(!isset($_POST['consulta_id']) 
+if(!isset($_POST['consulta_id'])
 || ($_POST['consulta_id']) == ''){
     header('HTTP/1.1 500 FAIL');
     die();
@@ -17,7 +17,8 @@ if(!isset($_POST['consulta_id'])
 
 $consultaId = $_POST['consulta_id'];
 
-$query = "DELETE FROM Consulta where consulta_id = '{$consultaId}'";
+$query = "UPDATE Consulta SET consulta_status = '2' WHERE consulta_id = '$consultaId';";
+
 
 if(mysqli_query($conn, $query)){
     header('HTTP/1.1 200 OK');

@@ -33,6 +33,8 @@ public class AddConsultaActivity extends AppCompatActivity {
     private ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
     private Spinner listaPacientes;
 
+    private EditText input_data;
+
     private Medico medico;
     private ArrayList<Medico> medicos = new ArrayList<Medico>();
     private Spinner listaMedicos;
@@ -55,6 +57,8 @@ public class AddConsultaActivity extends AppCompatActivity {
         listaEspecialidades = findViewById(R.id.input_consulta_especialidade);
         listaConvenios = findViewById(R.id.input_consulta_convenio);
 
+        input_data = findViewById(R.id.input_consulta_data);
+
         new getter().execute();
 
         listaMedicos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -73,15 +77,6 @@ public class AddConsultaActivity extends AppCompatActivity {
             }
         });
 
-       /* DatePicker datePicker = findViewById(R.id.date_picker_consulta);
-
-        datePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //DatePickerDialog dialog = new DatePickerDialog(AddConsultaActivity.this);
-            }
-        });
-        */
         Button btn_salvar_consulta = findViewById(R.id.btn_salvar_consulta);
         btn_salvar_consulta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +92,7 @@ public class AddConsultaActivity extends AppCompatActivity {
                 consulta.setPaciente(paciente.getId());
                 consulta.setEspecialidade(especialidade.getId());
                 consulta.setConvenio(convenio.getId());
+                consulta.setData(input_data.getText().toString());
 
                 new addConsulta().execute();
             }
