@@ -58,7 +58,9 @@ public class ConsultaActivity extends AppCompatActivity {
                     .setNeutralButton("Remarcar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //new remarcaConsulta().execute();
+                            Intent intent = new Intent(ConsultaActivity.this, EditConsultaActivity.class);
+                            intent.putExtra("consulta_id", consulta.getId());
+                            startActivity(intent);
                         }
                     }).setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                         @Override
@@ -83,6 +85,16 @@ public class ConsultaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent addConsultasView = new Intent (ConsultaActivity.this, AddConsultaActivity.class);
                 startActivity(addConsultasView);
+            }
+        });
+
+        Button btn_get_consulta_medico_data = findViewById(R.id.btn_get_consulta_medico_data);
+
+        btn_get_consulta_medico_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent getConsultaMedicoDataView = new Intent (ConsultaActivity.this, getConsultaMedicoActivity.class);
+                startActivity(getConsultaMedicoDataView);
             }
         });
     }

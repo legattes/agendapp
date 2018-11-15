@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="false"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:hint="Nova data"
+        android:id="@+id/input_edit_consulta_data"/>
+
+    <Button
+        android:id="@+id/btn_edit_consulta_data"
+        android:layout_width="122dp"
+        android:layout_height="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp"
+        android:text="Salvar"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="409dp" />
+</RelativeLayout>

@@ -13,20 +13,18 @@ if(!isset($_POST['consulta_id'])
 || !isset($_POST['consulta_data'])
 || ($_POST['consulta_id']) == ''
 || ($_POST['consulta_data']) == ''){
-    header('Response-Code: 420');
+    header('HTTP/1.1 500 FAIL');
     die();
 }
 
 $consultaId = $_POST['consulta_id'];
 $consultaData = $_POST['consulta_data'];
 
-
-
-$query = "UPDATE Consulta SET consulta_data = $consultaData WHERE consulta_id = '$consultaId';";
+$query = "UPDATE Consulta SET consulta_data = '$consultaData' WHERE consulta_id = '$consultaId';";
 
 
 if(mysqli_query($conn, $query)){
-    header('Response-Code: 200');
+    header('HTTP/1.1 200 OK');
 } else {
-    header('Response-Code: 420');
+    header('HTTP/1.1 500 FAIL');
 }

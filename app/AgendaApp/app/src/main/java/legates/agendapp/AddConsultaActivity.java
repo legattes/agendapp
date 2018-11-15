@@ -35,9 +35,7 @@ public class AddConsultaActivity extends AppCompatActivity {
 
     private EditText input_data;
 
-    private Medico medico;
-    private ArrayList<Medico> medicos = new ArrayList<Medico>();
-    private Spinner listaMedicos;
+    pç
 
     private Especialidade especialidade;
     private ArrayList<Especialidade> especialidades = new ArrayList<Especialidade>();

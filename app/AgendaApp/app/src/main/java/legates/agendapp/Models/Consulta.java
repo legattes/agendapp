@@ -135,6 +135,46 @@ public class Consulta {
         return consultas;
     }
 
+    public ArrayList<Consulta> getByDataMedico(String medico_id, String consulta_data){
+        values.put("medico_id", medico_id);
+        values.put("consulta_data", consulta_data);
+
+        service = new Service();
+        response = service.post(values, "http://agendapp.legates.com.br/consulta/listbydatamedico.php");
+
+        if(response.code() == 500){
+            return null;
+        }
+
+        JSONArray json = JSONParser.getKey(response, "consultas");
+
+        for(int i = 0; i < json.length(); i++){
+            JSONObject c = new JSONObject();
+
+            try {
+                c = json.getJSONObject(i);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Consulta consulta = new Consulta();
+
+            try {
+                consulta.setId(c.getString("consulta_id"));
+                consulta.setMedico(c.getString("medico_nome"));
+                consulta.setPaciente(c.getString("paciente_nome"));
+                consulta.setEspecialidade(c.getString("especialidade_nome"));
+                consulta.setConvenio(c.getString("convenio_nome"));
+                consulta.setStatus(c.getString("consulta_status"));
+                consulta.setData(c.getString("consulta_data"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            consultas.add(consulta);
+        }
+
+        return consultas;
+    }
+
     public boolean add(){
         values.put("medico_id", this.getMedico());
         values.put("paciente_id", this.getPaciente());
