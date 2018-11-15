@@ -88,15 +88,14 @@ public class ConsultaActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_get_consulta_medico_data = findViewById(R.id.btn_get_consulta_medico_data);
-
+        /*Button btn_get_consulta_medico_data = findViewById(R.id.btn_get_consulta_medico_data);
         btn_get_consulta_medico_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent getConsultaMedicoDataView = new Intent (ConsultaActivity.this, getConsultaMedicoActivity.class);
                 startActivity(getConsultaMedicoDataView);
             }
-        });
+        });*/
     }
 
     @Override

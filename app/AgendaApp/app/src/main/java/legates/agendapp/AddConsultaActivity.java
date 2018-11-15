@@ -35,8 +35,6 @@ public class AddConsultaActivity extends AppCompatActivity {
 
     private EditText input_data;
 
-    pç
-
     private Especialidade especialidade;
     private ArrayList<Especialidade> especialidades = new ArrayList<Especialidade>();
     private Spinner listaEspecialidades;
@@ -44,6 +42,10 @@ public class AddConsultaActivity extends AppCompatActivity {
     private Convenio convenio;
     private ArrayList<Convenio> convenios = new ArrayList<Convenio>();
     private Spinner listaConvenios;
+
+    private Medico medico;
+    private ArrayList<Medico> medicos = new ArrayList<Medico>();
+    private Spinner listaMedicos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

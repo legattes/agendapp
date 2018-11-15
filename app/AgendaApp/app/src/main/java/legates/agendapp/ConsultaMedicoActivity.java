@@ -35,7 +35,6 @@ public class ConsultaMedicoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consulta_medico);
 
 
-
         swipe = findViewById(R.id.listConsultasSwipe);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
