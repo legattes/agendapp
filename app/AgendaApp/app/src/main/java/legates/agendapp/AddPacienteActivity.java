@@ -35,12 +35,19 @@ public class AddPacienteActivity extends AppCompatActivity {
                 EditText paciente_telefone = findViewById(R.id.input_paciente_telefone);
                 EditText paciente_email = findViewById(R.id.input_paciente_email);
 
-                paciente.setNome(paciente_nome.getText().toString());
-                paciente.setCpf(paciente_cpf.getText().toString());
-                paciente.setTelefone(paciente_telefone.getText().toString());
-                paciente.setEmail(paciente_email.getText().toString());
+                if(paciente_nome.getText().toString().equals("")
+                        || paciente_cpf.getText().toString().equals("")
+                        || paciente_telefone.getText().toString().equals("")
+                        || paciente_email.getText().toString().equals("")){
+                    Toast.makeText(AddPacienteActivity.this, "É necessário preencher todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    paciente.setNome(paciente_nome.getText().toString());
+                    paciente.setCpf(paciente_cpf.getText().toString());
+                    paciente.setTelefone(paciente_telefone.getText().toString());
+                    paciente.setEmail(paciente_email.getText().toString());
 
-                new add().execute();
+                    new add().execute();
+                }
             }
         });
     }

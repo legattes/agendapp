@@ -29,10 +29,14 @@ public class AddConvenioActivity extends AppCompatActivity {
                 EditText convenio_nome = findViewById(R.id.input_convenio_nome);
                 EditText convenio_dia_mes_fatura = findViewById(R.id.input_convenio_dia_mes_fatura);
 
-                convenio.setNome(convenio_nome.getText().toString());
-                convenio.setDia_mes_fatura(convenio_dia_mes_fatura.getText().toString());
+                if(convenio_nome.getText().toString().equals("") || convenio_dia_mes_fatura.getText().toString().equals("")){
+                    Toast.makeText(AddConvenioActivity.this, "É necessário preencher todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    convenio.setNome(convenio_nome.getText().toString());
+                    convenio.setDia_mes_fatura(convenio_dia_mes_fatura.getText().toString());
 
-                new AddConvenioActivity.add().execute();
+                    new AddConvenioActivity.add().execute();
+                }
             }
         });
     }

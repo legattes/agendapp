@@ -1,22 +1,29 @@
 package legates.agendapp;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import legates.agendapp.Models.Consulta;
 import legates.agendapp.Models.Convenio;
@@ -33,7 +40,8 @@ public class AddConsultaActivity extends AppCompatActivity {
     private ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
     private Spinner listaPacientes;
 
-    private EditText input_data;
+    private EditText input_dia;
+    private EditText input_hora;
 
     private Especialidade especialidade;
     private ArrayList<Especialidade> especialidades = new ArrayList<Especialidade>();
@@ -57,7 +65,46 @@ public class AddConsultaActivity extends AppCompatActivity {
         listaEspecialidades = findViewById(R.id.input_consulta_especialidade);
         listaConvenios = findViewById(R.id.input_consulta_convenio);
 
-        input_data = findViewById(R.id.input_consulta_data);
+        Calendar c = Calendar.getInstance();
+        final int year = c.get(Calendar.YEAR);
+        final int month = c.get(Calendar.MONTH);
+        final int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+
+        input_dia = findViewById(R.id.input_consulta_dia);
+        input_dia.setInputType(InputType.TYPE_NULL);
+
+        input_dia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog date_picker = new DatePickerDialog(AddConsultaActivity.this, new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String data = String.valueOf(year) + "-" + String.valueOf(month) + "-" +
+                        String.valueOf(dayOfMonth);
+                        input_dia.setText(data);
+                    }
+                }, year, month, dayOfMonth);
+
+                date_picker.show();
+            }
+        });
+
+        input_hora = findViewById(R.id.input_consulta_hora);
+        input_hora.setInputType(InputType.TYPE_NULL);
+        input_hora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog time_picker = new TimePickerDialog(AddConsultaActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        String data = String.valueOf(hourOfDay) + ":" + String.valueOf(minute) + ":" + "00";
+                        input_hora.setText(data);
+                    }
+                }, 10, 12, true);
+                time_picker.show();
+            }
+        });
 
         new getter().execute();
 
@@ -86,17 +133,22 @@ public class AddConsultaActivity extends AppCompatActivity {
                 especialidade = (Especialidade) listaEspecialidades.getSelectedItem();
                 convenio = (Convenio) listaConvenios.getSelectedItem();
 
-                consulta = new Consulta();
+                if(medico == null || paciente == null || convenio == null || especialidade == null || input_dia.getText().toString().equals("") || input_hora.getText().toString().equals("")){
+                    Toast.makeText(AddConsultaActivity.this, "É necessário preencher todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    consulta = new Consulta();
 
-                consulta.setMedico(medico.getId());
-                consulta.setPaciente(paciente.getId());
-                consulta.setEspecialidade(especialidade.getId());
-                consulta.setConvenio(convenio.getId());
-                consulta.setData(input_data.getText().toString());
+                    consulta.setMedico(medico.getId());
+                    consulta.setPaciente(paciente.getId());
+                    consulta.setEspecialidade(especialidade.getId());
+                    consulta.setConvenio(convenio.getId());
+                    consulta.setData(input_dia.getText().toString() + " " + input_hora.getText().toString());
 
-                new addConsulta().execute();
+                    new addConsulta().execute();
+                }
             }
         });
+
     }
 
     private class getter extends AsyncTask<Void, Void, Void>{

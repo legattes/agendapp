@@ -33,13 +33,21 @@ public class AddMedicoActivity extends AppCompatActivity {
                 EditText medico_telefone = findViewById(R.id.input_medico_telefone);
                 EditText medico_email = findViewById(R.id.input_medico_email);
 
-                medico.setNome(medico_nome.getText().toString());
-                medico.setCpf(medico_cpf.getText().toString());
-                medico.setCrm(medico_crm.getText().toString());
-                medico.setTelefone(medico_telefone.getText().toString());
-                medico.setEmail(medico_email.getText().toString());
+                if(medico_nome.getText().toString().equals("")
+                        || medico_cpf.getText().toString().equals("")
+                        || medico_crm.getText().toString().equals("")
+                        || medico_telefone.getText().toString().equals("")
+                        || medico_email.getText().toString().equals("")){
+                    Toast.makeText(AddMedicoActivity.this, "É necessário preencher todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    medico.setNome(medico_nome.getText().toString());
+                    medico.setCpf(medico_cpf.getText().toString());
+                    medico.setCrm(medico_crm.getText().toString());
+                    medico.setTelefone(medico_telefone.getText().toString());
+                    medico.setEmail(medico_email.getText().toString());
 
-                new AddMedicoActivity.add().execute();
+                    new AddMedicoActivity.add().execute();
+                }
             }
         });
     }

@@ -17,7 +17,7 @@
         </ListView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_get_consulta_medico_data"
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -25,7 +25,7 @@
         android:layout_marginRight="20dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="143dp"
-        android:text="Por médico" />
+        android:text="Por médico" />-->
 
     <Button
         android:id="@+id/btn_add_consulta"

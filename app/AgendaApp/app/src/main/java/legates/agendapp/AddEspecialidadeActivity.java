@@ -28,9 +28,13 @@ public class AddEspecialidadeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText especialidade_nome = findViewById(R.id.input_especialidade_nome);
 
-                especialidade.setNome(especialidade_nome.getText().toString());
+                if(especialidade_nome.getText().toString().equals("")){
+                    Toast.makeText(AddEspecialidadeActivity.this, "É necessário preencher todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    especialidade.setNome(especialidade_nome.getText().toString());
 
-                new AddEspecialidadeActivity.add().execute();
+                    new AddEspecialidadeActivity.add().execute();
+                }
             }
         });
     }

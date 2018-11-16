@@ -59,7 +59,7 @@
             android:label="@string/label_edit_especialidade_activity" />
         <activity
             android:name=".AddConsultaActivity"
-            android:label="@string/label_add_convenio_activity" />
+            android:label="@string/label_add_consulta_activity" />
         <activity
             android:name=".MedicoEspecialidadeActivity"
             android:label="@string/label_medico_especialidade_activity" />

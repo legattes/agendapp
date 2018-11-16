@@ -7,40 +7,90 @@
     android:layout_centerInParent="false"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:text="Médico" />
+
     <Spinner
         android:id="@+id/input_consulta_medico"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"></Spinner>
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="0dp"></Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="110dp"
+        android:text="Paciente" />
 
     <Spinner
         android:id="@+id/input_consulta_paciente"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="95dp"></Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="181dp"
+        android:text="Especialidade" />
 
     <Spinner
         android:id="@+id/input_consulta_especialidade"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="166dp"></Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="250dp"
+        android:text="Convênio" />
 
     <Spinner
         android:id="@+id/input_consulta_convenio"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="235dp"></Spinner>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:id="@+id/input_consulta_dia"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="310dp"
-        android:hint="Data"
-        android:id="@+id/input_consulta_data"/>
+        android:hint="Dia"
+        android:inputType="none"/>
+
+    <EditText
+        android:id="@+id/input_consulta_hora"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="310dp"
+        android:layout_marginRight="10dp"
+        android:hint="Hora"
+        android:inputType="none"/>
 
     <Button
         android:id="@+id/btn_salvar_consulta"
