@@ -5,7 +5,7 @@
  * email lucas.arantes55@gmail.com
  */
 
-class Conexao{
+class Connection{
     public function connect(){    
         $server = 'localhost';
         $user = 'u112785488_zion';
