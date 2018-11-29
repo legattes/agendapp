@@ -4,8 +4,6 @@
  * author legates (Lucas)
  * email lucas.arantes55@gmail.com
  */
-include ("connection.php");
-
 class Paciente {
     public function post(){          
         if(!isset($_POST['paciente_nome'])
@@ -64,25 +62,5 @@ class Paciente {
         }  
 
         echo json_encode($result);
-    }
-
-    public function delete(){        
-        if(!isset($_POST['paciente_id']) 
-        || ($_POST['paciente_id']) == ''){
-            header('HTTP/1.1 500 FAIL');
-            die();
-        }
-        
-        $pacienteId = $_POST['paciente_id'];
-        
-        $query = "DELETE FROM Paciente where paciente_id = '{$pacienteId}'";
-        
-        $conn = (new Connection())->connect();
-        
-        if(mysqli_query($conn, $query)){
-            header('HTTP/1.1 200 OK');
-        } else {
-            header('HTTP/1.1 500 FAIL');
-        }
     }
 }    

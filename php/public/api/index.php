@@ -4,20 +4,12 @@
  * author legates (Lucas)
  * email lucas.arantes55@gmail.com
  */
+require '../../../agendapp/route.php';
+require "../../../agendapp/connection.php";
+include '../../../agendapp/Paciente.php';
+include '../../../agendapp/Medico.php';
+include '../../../agendapp/Consulta.php';
+include '../../../agendapp/Especialidade.php';
+include '../../../agendapp/Convenio.php';
 
-
-include "../../../agendapp/Paciente.php";
-
-
-$url = explode("/", $_SERVER['REQUEST_URI']);
-$method = $_SERVER["REQUEST_METHOD"];
-$arg = '';
-
-$controller = $url[1];
-if(count($url) > 2){
-    $arg = $url[2];
-}
-
-$controller = new $controller;
-
-$controller->$method($arg);
+Route::handle();

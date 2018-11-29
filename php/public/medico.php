@@ -17,8 +17,8 @@
             <div class="row">
                 <div role="main">
                     <div id="main" class="container-fluid">
-                        <h3 class="page-header">MEDICO
-                            <a href=""><button type="button" class="btn btn-success">Adicionar</button></a>
+                        <h3 class="page-header">MEDICOS
+                            <a href="addmedico.php"><button type="button" class="btn btn-success">Adicionar</button></a>
                         </h3>
                     </div>   
                     <table class="table">

@@ -18,7 +18,7 @@
                 <div role="main">
                     <div class="list-group">
                         <a href="paciente.php" class="list-group-item">Pacientes</a>
-                        <a href="consultas.php" class="list-group-item">Consultas</a>
+                        <a href="consulta.php" class="list-group-item">Consultas</a>
                         <a href="medico.php" class="list-group-item">Medicos</a>
                         <a href="convenio.php" class="list-group-item">Convenios</a>
                         <a href="especialidade.php" class="list-group-item">Especialidades</a>

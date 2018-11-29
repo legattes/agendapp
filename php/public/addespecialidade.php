@@ -17,21 +17,16 @@
             <div class="row">
                 <div role="main">
                     <div id="main" class="container-fluid">
-                        <h2 class="page-header">CADASTRAR CONVÊNIO /h2>
+                        <h2 class="page-header">CADASTRAR ESPECIALIDADE</h2>
                     </div>   
-                    <form name="addconvenio" method="POST" action="http://agendapp.legates.com.br/api/convenio">
+                    <form name="addespecialidade" method="POST" action="http://agendapp.legates.com.br/api/especialidade">
                         <div class="form-group">      
-                            <label for="convenio_nome" class="control-label">Nome</label>      
-                            <input name="convenio_nome" class="form-control" placeholder="Digite o nome..." type="text">   
-                        </div>                        
-
-                        <div class="form-group">      
-                            <label for="convenio_dia_mes_fatura" class="control-label">CPF</label>      
-                            <input name="convenio_dia_mes_fatura" class="form-control" placeholder="Digite o dia de faturar..." type="text">   
-                        </div>   
+                            <label for="especialidade_nome" class="control-label">Nome</label>      
+                            <input name="especialidade_nome" class="form-control" placeholder="Digite o nome..." type="text">   
+                        </div>         
 
                         <button type="submit" class="btn btn-primary">Enviar</button>
-                        <a href="convenio.php"><button type="button" class="btn btn-danger">Voltar</button></a>
+                        <a href="especialidade.php"><button type="button" class="btn btn-danger">Voltar</button></a>
 
                     </form>
                 </div>

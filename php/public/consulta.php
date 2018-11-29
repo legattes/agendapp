@@ -16,28 +16,32 @@
             <div class="row">
                 <div role="main">
                     <div id="main" class="container-fluid">
-                        <h3 class="page-header">PACIENTES
-                            <a href="addpaciente.php"><button type="button" class="btn btn-success">Adicionar</button></a>
+                        <h3 class="page-header">CONSULTAS
+                            <a href="addconsulta.php"><button type="button" class="btn btn-success">Adicionar</button></a>
                         </h3>
                     </div>   
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">CPF</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">Paciente</th>
+                                <th scope="col">Médico</th>
+                                <th scope="col">Especialidade</th>
+                                <th scope="col">Convênio</th>
+                                <th scope="col">Dia</th>                                
+                                <th scope="col">Hora</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $response = json_decode(file_get_contents("http://agendapp.legates.com.br/api/paciente"));
-                            foreach ($response->pacientes as $paciente) {
+                            $response = json_decode(file_get_contents("http://agendapp.legates.com.br/api/consulta"));
+                            foreach ($response->consultas as $consulta) {
                                 echo "<tr>";
-                                echo "<td>" . $paciente->nome . "</td>";
-                                echo "<td>" . $paciente->cpf . "</td>";
-                                echo "<td>" . $paciente->telefone . "</td>";
-                                echo "<td>" . $paciente->email . "</td>";
+                                echo "<td>" . $consulta->medico_nome . "</td>";
+                                echo "<td>" . $consulta->paciente_nome . "</td>";
+                                echo "<td>" . $consulta->especialidade_nome . "</td>";
+                                echo "<td>" . $consulta->convenio_nome . "</td>";
+                                echo "<td>" . date_format(date_create($consulta->consulta_data), "d/m/Y") . "</td>";
+                                echo "<td>" . date_format(date_create($consulta->consulta_data), "H:i") . "</td>";
                                 echo "</tr>";
                             }
                             ?>

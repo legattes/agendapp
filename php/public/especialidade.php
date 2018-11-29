@@ -18,7 +18,7 @@
                 <div role="main">
                     <div id="main" class="container-fluid">
                         <h3 class="page-header">ESPECIALIDADES
-                            <a href=""><button type="button" class="btn btn-success">Adicionar</button></a>
+                            <a href="addespecialidade.php"><button type="button" class="btn btn-success">Adicionar</button></a>
                         </h3>
                     </div>   
                     <table class="table">
