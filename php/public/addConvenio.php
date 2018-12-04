@@ -17,7 +17,7 @@
             <div class="row">
                 <div role="main">
                     <div id="main" class="container-fluid">
-                        <h2 class="page-header">CADASTRAR CONVÊNIO /h2>
+                        <h2 class="page-header">CADASTRAR CONVÊNIO </h2>
                     </div>   
                     <form name="addconvenio" method="POST" action="http://agendapp.legates.com.br/api/convenio">
                         <div class="form-group">      

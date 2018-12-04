@@ -13,6 +13,7 @@ class Route{
         unset($url[0]);        
         unset($url[1]);
         
+
         $controller = array_shift($url);
         
         if(count($url) > 0){
